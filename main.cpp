@@ -42,31 +42,50 @@ class Person {
         return firstName ;
     }  
 
-
-    // bool partialMatched(Person person)
-    // {
-    //     for(int i = 0 ; i < person.getFirst)
-    // }
 };
 
 
 class ContactBook{
 
     vector<Person> groupOfPerson ;
+    // const int FOUND_FULL = 
+    const int QUERY_FIRSTNAME = 1 ;
+    const int QUERY_LASTTNAME = 2 ;
+    const int QUERY_PHONE = 3 ;
 
 
-    bool matchedName(Person name)
+    int match(Person targetPerson , int mode)
     {
-        
-    }
+        if(mode == QUERY_FIRSTNAME)
+        {
+            for(Person& person : groupOfPerson)
+            {
+                if(person.getFirstName() == targetPerson.getFirstName()) 
+                {
+                    return ;
+                }
 
+                string pesronAFirstName = 
+            }  
+        }
+
+        else if( mode == QUERY_LASTTNAME)
+        {
+
+        }
+
+        else if(mode == QUERY_PHONE)
+        {
+
+        }
+    }
 
     vector<Person> searchByNameExact(string name)
     {
         vector<Person> queryResult  ;
         for(Person& person : groupOfPerson)
         {
-            if(person.matchedName(name))
+            if(matchedName(name))
             {
                 queryResult.push_back(person) ;
             }
