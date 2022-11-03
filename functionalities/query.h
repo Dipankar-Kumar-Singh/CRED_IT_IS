@@ -1,11 +1,9 @@
 #include <bits/stdc++.h>
 #include "person.h" 
-
 using namespace std ;
 
 class Query
 {
-
     public : 
     vector<int> attriblueStatus ;
     Person target ;

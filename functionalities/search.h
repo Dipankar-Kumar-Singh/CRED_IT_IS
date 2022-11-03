@@ -1,9 +1,7 @@
 #include <bits/stdc++.h>
 #include "query.h"
 #include "stringMatching.h"
-
 using namespace std ;
-
 vector<Person> search(vector<Person> groupOfPerson , Query queryFrame)
 {
     bool partialSearchApplicable = queryFrame.partialMode ;
@@ -11,14 +9,6 @@ vector<Person> search(vector<Person> groupOfPerson , Query queryFrame)
     Person targetPerson = queryFrame.target ;
 
     vector<Person> quilifiedPersons ;
-
-    cerr << "\n\nprinting data frame : " ;
-    for(int i = 1 ; i <= 3 ; i++)
-    {
-        cerr << attriblueStatus[i] << " " ;
-    }
-
-    cerr << "------------end--------\n" ;
 
     for (Person person : groupOfPerson)
     {
@@ -58,5 +48,4 @@ vector<Person> search(vector<Person> groupOfPerson , Query queryFrame)
     }
 
     return quilifiedPersons ;
-    
 };

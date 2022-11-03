@@ -27,7 +27,6 @@ class ContactBook{
 
     vector<Person> searchForQuery(Query query)
     {
-        vector<Person> quilifiedPersons = search(groupOfPerson, query);
-        return quilifiedPersons ;
+        return search(groupOfPerson, query) ;
     }
 };
