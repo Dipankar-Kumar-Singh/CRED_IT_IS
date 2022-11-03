@@ -24,7 +24,22 @@ class PhoneNumber{
 
     string getBaseNumber()
     {
-        return this->countryCode;
+        return this->baseNumber;
     }
 
+
+    void setNumber(string _countryCode, string _baseNumber)
+    {
+        countryCode = _countryCode ;
+        baseNumber = _baseNumber ;
+    }
+
+    void setNumber()
+    {
+        cout << "Country Code : ";
+        cin >> countryCode;
+
+        cout << "Number  : ";
+        cin >> baseNumber;
+    }
 };

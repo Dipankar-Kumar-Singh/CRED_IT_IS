@@ -34,4 +34,47 @@ class Person {
         return phoneNumber.getCountryCode() + phoneNumber.getBaseNumber() ;
     }
 
+    void setFirstName(string name)
+    {
+        this->firstName = name ;
+    }
+
+    void setFirstName()
+    {
+        cout << " First Name : " ; 
+        cin >> firstName ;
+    }
+
+    void setLastName(string name)
+    {
+        lastName = name ;
+    }
+    void setLastName()
+    {
+        cout << " Last Name : " ; 
+        cin >> lastName ;
+    }
+
+    void setPhoneNumber(PhoneNumber _phone)
+    {
+        phoneNumber = _phone ;
+    }
+    void setPhoneNumber()
+    {
+        phoneNumber.setNumber() ;
+    }
+
+    void setPerson()
+    {
+        setFirstName() ;
+        setLastName() ;
+        setPhoneNumber() ;
+    }
+
+    void showDetails()
+    {
+        cout << "First Name : " << firstName << endl ;
+        cout << "Second Name : " << lastName << endl ;
+        cout << "Phone : " <<  phoneNumber.getCountryCode()  <<  " " << phoneNumber.getBaseNumber() << endl ;
+    }
 };

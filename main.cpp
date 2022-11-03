@@ -1,11 +1,30 @@
 #include <bits/stdc++.h>
 #include "functionalities/contactBook.h"
+
 using namespace std ;
 
-int main( ) {
+int main( ) 
+{
     
     ContactBook contactBook ; 
 
-    PhoneNumber phone("+91" , "7987191134") ;
-    cout << phone.getCountryCode() ;
+    contactBook.addToContactBook() ; cout << endl ;
+    contactBook.addToContactBook() ; cout << endl ;
+    contactBook.addToContactBook() ; cout << endl ;
+
+    while (1)
+    {
+        cout << "Give query" << endl;
+        Query query(contactBook.getNoOfAttribute()) ;
+        query.setQueryFrame() ;
+        vector<Person> quilifiedPersons = contactBook.searchForQuery(query);
+        for(Person person : quilifiedPersons )
+        {
+            person.showDetails() ;
+            cout << endl ;
+        }
+
+        break;
+    }
+    
 }
