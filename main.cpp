@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include "functionalities/contactBook.h"
-
 using namespace std ;
 
 int main( ) 
@@ -22,12 +21,7 @@ int main( )
             person.showDetails() ;
             cout << endl ;
         }
-
         break;
     }
-
-
-
-
     
 }
