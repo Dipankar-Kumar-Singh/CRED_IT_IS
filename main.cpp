@@ -16,6 +16,17 @@ class PhoneNumber{
     }
 
     PhoneNumber() {} ;
+
+    string getCountryCode()
+    {
+        return this->countryCode;
+    }
+
+    string getBaseNumber()
+    {
+        return this->countryCode;
+    }
+
 };
 
 
@@ -39,71 +50,109 @@ class Person {
     public : 
     string getFirstName()
     {
-        return firstName ;
+        return this->firstName ;
     }  
 
-};
+    string getLastName()
+    {
+        return this->lastName ;
+    }
 
+    string getPhoneNumber()
+    {
+        return phoneNumber.getCountryCode() + phoneNumber.getBaseNumber() ;
+    }
+
+};
 
 class ContactBook{
 
     vector<Person> groupOfPerson ;
-    // const int FOUND_FULL = 
     const int QUERY_FIRSTNAME = 1 ;
     const int QUERY_LASTTNAME = 2 ;
     const int QUERY_PHONE = 3 ;
 
-
-    int match(Person targetPerson , int mode)
+    pair<bool, bool> matchType(string target , string source)
     {
-        if(mode == QUERY_FIRSTNAME)
+        int prefixMatchSize = 0;
+        for (int i = 0; i <= min(target.size(), source.size()); i++)
         {
-            for(Person& person : groupOfPerson)
+            if (target[i] == source[i])
             {
-                if(person.getFirstName() == targetPerson.getFirstName()) 
-                {
-                    return ;
-                }
-
-                string pesronAFirstName = 
-            }  
+                prefixMatchSize++;
+            }
+            else
+            {
+                break;
+            }
         }
 
-        else if( mode == QUERY_LASTTNAME)
-        {
-
-        }
-
-        else if(mode == QUERY_PHONE)
-        {
-
-        }
+        pair<bool, bool> result;
+        result.first = (prefixMatchSize == target.size());
+        result.second = (prefixMatchSize == source.size());
+        return result;
     }
 
-    vector<Person> searchByNameExact(string name)
+    vector<Person> match(Person targetPerson , int mode , bool partial)
     {
-        vector<Person> queryResult  ;
+        vector<Person> queryResult ;
+        
         for(Person& person : groupOfPerson)
         {
-            if(matchedName(name))
+
+            if(mode == QUERY_FIRSTNAME) 
             {
-                queryResult.push_back(person) ;
+                pair<bool,bool> result = matchType(targetPerson.getFirstName(),person.getFirstName()) ;
+                
+                if(result.second == true)
+                {
+                    queryResult.push_back(person) ;
+                }
+                
+                else if(partial and result.first)
+                {
+                    queryResult.push_back(person) ;
+                }
+
             }
-        }  
+            else if( mode == QUERY_LASTTNAME)
+            {
+                pair<bool,bool> result = matchType(targetPerson.getFirstName(),person.getFirstName()) ;
+                
+                if(result.second == true)
+                {
+                    queryResult.push_back(person) ;
+                }
+                
+                else if(partial and result.first)
+                {
+                    queryResult.push_back(person) ;
+                }
+            }
+            else if(mode == QUERY_PHONE)
+            {
+                pair<bool,bool> result = matchType(targetPerson.getPhoneNumber(),person.getPhoneNumber()) ;
+                
+                if(result.second == true)
+                {
+                    queryResult.push_back(person) ;
+                }
+                
+                else if(partial and result.first)
+                {
+                    queryResult.push_back(person) ;
+                }
+            }
+        } 
 
         return queryResult ; 
     }
-
-
-    vector<Person> searchByNamePartial(string name)
-    {
-
-    }
-
 };
 
-int main(int, char**) {
-    std::cout << "Hello, world!\n";
+int main( ) {
+    
+    ContactBook contactBook ; 
 
-    Person p ;
+    PhoneNumber phone("+91" , "7987191134") ;
+    cout << phone.getCountryCode() ;
 }
