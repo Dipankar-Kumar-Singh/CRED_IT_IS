@@ -3,7 +3,7 @@ using namespace std ;
 
 
 class PhoneNumber{
-    public : 
+    private : 
     string countryCode ;
     string baseNumber ;
 
@@ -16,6 +16,16 @@ class PhoneNumber{
     }
 
     PhoneNumber() {} ;
+
+    string getCountryCode()
+    {
+        return this->countryCode;
+    }
+
+    string getBaseNumber()
+    {
+        return this->countryCode;
+    }
 
 };
 
@@ -40,31 +50,28 @@ class Person {
     public : 
     string getFirstName()
     {
-        return firstName ;
+        return this->firstName ;
     }  
 
     string getLastName()
     {
-        return lastName ;
+        return this->lastName ;
     }
 
     string getPhoneNumber()
     {
-        return phoneNumber.countryCode + phoneNumber.baseNumber ;
+        return phoneNumber.getCountryCode() + phoneNumber.getBaseNumber() ;
     }
 
 };
 
-
 class ContactBook{
 
     vector<Person> groupOfPerson ;
-    // const int FOUND_FULL = 
     const int QUERY_FIRSTNAME = 1 ;
     const int QUERY_LASTTNAME = 2 ;
     const int QUERY_PHONE = 3 ;
 
-    
     pair<bool, bool> matchType(string target , string source)
     {
         int prefixMatchSize = 0;
@@ -86,75 +93,69 @@ class ContactBook{
         return result;
     }
 
-    int match(Person targetPerson , int mode , bool partial)
+    vector<Person> match(Person targetPerson , int mode , bool partial)
     {
         vector<Person> queryResult ;
         
-            for(Person& person : groupOfPerson)
+        for(Person& person : groupOfPerson)
+        {
+
+            if(mode == QUERY_FIRSTNAME) 
             {
-
-                if(mode == QUERY_FIRSTNAME) 
+                pair<bool,bool> result = matchType(targetPerson.getFirstName(),person.getFirstName()) ;
+                
+                if(result.second == true)
                 {
-                    pair<bool,bool> result = matchType(targetPerson.getFirstName(),person.getFirstName()) ;
-                    
-                    if(result.second == true)
-                    {
-                        queryResult.push_back(person) ;
-                    }
-                    
-                    else if(partial and result.first)
-                    {
-                        queryResult.push_back(person) ;
-                    }
-
+                    queryResult.push_back(person) ;
                 }
-                else if( mode == QUERY_LASTTNAME)
+                
+                else if(partial and result.first)
                 {
-                    pair<bool,bool> result = matchType(targetPerson.getFirstName(),person.getFirstName()) ;
-                    
-                    if(result.second == true)
-                    {
-                        queryResult.push_back(person) ;
-                    }
-                    
-                    else if(partial and result.first)
-                    {
-                        queryResult.push_back(person) ;
-                    }
-                }
-                else if(mode == QUERY_PHONE)
-                {
-                    pair<bool,bool> result = matchType(targetPerson.getFirstName(),person.getFirstName()) ;
-                    
-                    if(result.second == true)
-                    {
-                        queryResult.push_back(person) ;
-                    }
-                    
-                    else if(partial and result.first)
-                    {
-                        queryResult.push_back(person) ;
-                    }
+                    queryResult.push_back(person) ;
                 }
 
+            }
+            else if( mode == QUERY_LASTTNAME)
+            {
+                pair<bool,bool> result = matchType(targetPerson.getFirstName(),person.getFirstName()) ;
+                
+                if(result.second == true)
+                {
+                    queryResult.push_back(person) ;
+                }
+                
+                else if(partial and result.first)
+                {
+                    queryResult.push_back(person) ;
+                }
+            }
+            else if(mode == QUERY_PHONE)
+            {
+                pair<bool,bool> result = matchType(targetPerson.getPhoneNumber(),person.getPhoneNumber()) ;
+                
+                if(result.second == true)
+                {
+                    queryResult.push_back(person) ;
+                }
+                
+                else if(partial and result.first)
+                {
+                    queryResult.push_back(person) ;
+                }
+            }
+        } 
 
-
-            }  
-
+        return queryResult ; 
     }
-
- 
-
-
-    vector<Person> searchByNamePartial(string name)
-    {
-
-    }
-
 };
 
-int main(int, char**) {
-    std::cout << "Hello, world!\n";
+int main( ) {
+    
+    ContactBook contactBook ; 
 
-    Person p ;
+    PhoneNumber phone("+91" , "7987191134") ;
+    cout << phone.getCountryCode() ;
+    
+    
+
 }
