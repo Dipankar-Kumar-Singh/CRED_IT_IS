@@ -42,23 +42,23 @@ class Person {
         return firstName ;
     }  
 
-    bool matchedName(string name)
-    {
-        if(firstName == name) return true ; 
-        else if(lastName == name) return true ;
-        return false ;
-    }
 
-    bool partialMatched(Person person)
-    {
-        for(int i = 0 ; i < person.getFirst)
-    }
+    // bool partialMatched(Person person)
+    // {
+    //     for(int i = 0 ; i < person.getFirst)
+    // }
 };
 
 
 class ContactBook{
 
     vector<Person> groupOfPerson ;
+
+
+    bool matchedName(Person name)
+    {
+        
+    }
 
 
     vector<Person> searchByNameExact(string name)
@@ -78,7 +78,7 @@ class ContactBook{
 
     vector<Person> searchByNamePartial(string name)
     {
-        
+
     }
 
 };
