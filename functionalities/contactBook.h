@@ -1,69 +1,6 @@
 #include <bits/stdc++.h>
+#include "person.h"
 using namespace std ;
-
-
-class PhoneNumber{
-    private : 
-    string countryCode ;
-    string baseNumber ;
-
-    public : 
-
-    PhoneNumber(string _countryCode, string _baseNumber)
-    {
-        countryCode = _countryCode ;
-        baseNumber = _baseNumber ;
-    }
-
-    PhoneNumber() {} ;
-
-    string getCountryCode()
-    {
-        return this->countryCode;
-    }
-
-    string getBaseNumber()
-    {
-        return this->countryCode;
-    }
-
-};
-
-
-
-class Person {
-    
-    private : 
-    string firstName ; 
-    string lastName ;
-    PhoneNumber phoneNumber ;
-
-    public :
-    Person(string _firstName , string _lastName , PhoneNumber _phoneNumber ){
-        firstName  = _firstName ;
-        lastName = _lastName ;
-        phoneNumber = _phoneNumber ;
-    } 
-
-    Person(){} ;
-
-    public : 
-    string getFirstName()
-    {
-        return this->firstName ;
-    }  
-
-    string getLastName()
-    {
-        return this->lastName ;
-    }
-
-    string getPhoneNumber()
-    {
-        return phoneNumber.getCountryCode() + phoneNumber.getBaseNumber() ;
-    }
-
-};
 
 class ContactBook{
 
@@ -148,11 +85,3 @@ class ContactBook{
         return queryResult ; 
     }
 };
-
-int main( ) {
-    
-    ContactBook contactBook ; 
-
-    PhoneNumber phone("+91" , "7987191134") ;
-    cout << phone.getCountryCode() ;
-}
