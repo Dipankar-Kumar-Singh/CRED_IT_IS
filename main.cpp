@@ -5,23 +5,12 @@ using namespace std ;
 int main( ) 
 {
     ContactBook contactBook ; 
+    contactBook.addToContactBook() ; cout << endl ;
+    Query query(contactBook.getNoOfAttribute()) ;
 
-    contactBook.addToContactBook() ; cout << endl ;
-    contactBook.addToContactBook() ; cout << endl ;
-    contactBook.addToContactBook() ; cout << endl ;
+    query.setQueryFrame() ;
+    vector<Person> quilifiedPersons = contactBook.searchForQuery(query);
 
-    while (1)
-    {
-        cout << "Give query" << endl;
-        Query query(contactBook.getNoOfAttribute()) ;
-        query.setQueryFrame() ;
-        vector<Person> quilifiedPersons = contactBook.searchForQuery(query);
-        for(Person person : quilifiedPersons )
-        {
-            person.showDetails() ;
-            cout << endl ;
-        }
-        break;
-    }
-    
+    for(Person person : quilifiedPersons )
+        person.showDetails() ;
 }

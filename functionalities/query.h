@@ -7,7 +7,7 @@ class Query
     const int ON = 1;
     const int OFF = 0;
 
-public:
+    public:
     vector<int> attriblueStatus;
     Person target;
     bool partialMode = 0;
@@ -40,7 +40,7 @@ public:
 
         cout << "Apply Phone Number ? 1(YES) : 0(NO)  ";
         cin >> attriblueStatus[3];
-        
+
         if (attriblueStatus[3] == ON)
         {
             target.setPhoneNumber();
